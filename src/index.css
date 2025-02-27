@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap");
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;500;700&display=swap');
 
 * {
   margin: 0;
@@ -11,82 +12,111 @@ html {
 }
 
 body {
-  font-family: "Cinzel Decorative", cursive;
+  font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   height: 100vh;
-  color: #222;
-  background-color: #eabfb9;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* App Container */
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 112rem;
-  gap: 4rem;
-  padding: 6rem 0;
-  border: 2px solid #222;
-  outline: 2px solid #222;
-  outline-offset: 1.2rem;
+  gap: 3rem;
+  padding: 4rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Title */
 h1 {
-  font-weight: 400;
-  font-size: 6rem;
-  letter-spacing: 2px;
-  word-spacing: 5px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: 700;
+  font-size: 5rem;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.4);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 2.4rem;
-}
-
+/* Input Field */
 input {
   font-family: inherit;
-  color: inherit;
-  font-size: 2rem;
-  background-color: #f0d2ce;
-  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+  color: #222;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1.6rem;
+  width: 28rem;
   border: none;
-  width: 32rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 input:focus {
-  outline: 2px solid #222;
+  outline: 3px solid #00c6ff;
 }
 
+/* Weather Display */
 .weather {
-  list-style: none;
   display: flex;
-  gap: 2.4rem;
+  flex-wrap: wrap; /* Allows items to wrap instead of stretching */
+  justify-content: center; /* Centers items horizontally */
+  gap: 2rem; /* Adds space between items */
+  padding: 2rem;
+  max-width: 100%;
+  max-height: 50%;
 }
 
+/* Weather Cards */
 .day {
-  background-color: #f0d2ce;
-  padding: 1.6rem 0 2rem;
-  width: 12.8rem;
-
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1.6rem;
+  width: 14rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
   cursor: pointer;
+  text-align: center;
 }
 
+.day:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Weather Icons */
 .day span {
-  font-size: 5.2rem;
+  font-size: 4.5rem;
 }
 
+/* Highlight Today's Weather */
 .day.important {
-  background-color: #ecc5c0;
-  outline: 2px solid #222;
+  background: rgba(255, 255, 255, 0.4);
+  outline: 2px solid #00c6ff;
 }
 
+/* Loader */
 .loader {
   font-size: 2.4rem;
   font-weight: 700;
+  animation: fadeIn 1s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }

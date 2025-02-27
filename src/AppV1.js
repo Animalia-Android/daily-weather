@@ -66,12 +66,6 @@ class App extends React.Component {
     weather: {},
   };
 
-  //No longer needed
-  // constructor(props) {
-  //   super(props);
-  //   this.fetchWeather = this.fetchWeather.bind(this);
-  // }
-
   // async fetchWeather() {
   fetchWeather = async () => {
     if (this.state.location.length < 2) return this.setState({ weather: {} });
@@ -130,25 +124,26 @@ class App extends React.Component {
     return (
       <div className="app">
         <h1>Classy Weather</h1>
-        {/* <div>
-          <input
-            type="text"
-            placeholder="Search from location"
-            value={this.state.location}
-            onChange={(e) => this.setState({ location: e.target.value })}
+
+        {/* Input Section */}
+        <div className="input-container">
+          <Input
+            location={this.state.location}
+            onChangeLocation={this.setLocation}
           />
-        </div> */}
-        <Input
-          location={this.state.location}
-          onChangeLocation={this.setLocation}
-        />
-        {/* <button onClick={this.fetchWeather}>Get Weather</button> */}
+        </div>
+
+        {/* Show Loader If Loading */}
         {this.state.isLoading && <p className="loader">Loading...</p>}
+
+        {/* Weather Section Below Input */}
         {this.state.weather.weathercode && (
-          <Weather
-            weather={this.state.weather}
-            location={this.state.displayLocation}
-          />
+          <div className="weather-container">
+            <Weather
+              weather={this.state.weather}
+              location={this.state.displayLocation}
+            />
+          </div>
         )}
       </div>
     );
