@@ -26,6 +26,7 @@ body {
 .app {
   display: flex;
   flex-direction: column;
+  width: 70vw;
   align-items: center;
   gap: 3rem;
   padding: 4rem;
@@ -119,4 +120,16 @@ input:focus {
   100% {
     opacity: 1;
   }
+}
+
+.weather-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.weather-container.show {
+  max-height: 500px; /* Adjust based on content */
+  opacity: 1;
 }
