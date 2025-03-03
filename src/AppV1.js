@@ -177,12 +177,18 @@ class App extends React.Component {
     }
     this.debounceTimeout = setTimeout(() => {
       this.fetchWeather();
-    }, 800);
+    }, 400);
+  };
+
+  // Clear input when user clicks away, reloads, or clicks the button
+  clearInput = () => {
+    this.setState({ location: '' });
   };
 
   componentDidMount() {
     const savedLocation = localStorage.getItem('location') || '';
     this.setState({ location: savedLocation });
+    this.setState({ location: '' }); // Clear input on reload
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -198,10 +204,17 @@ class App extends React.Component {
 
         {/* Input Section */}
         <div className="input-container">
-          <Input
-            location={this.state.location}
-            onChangeLocation={this.setLocation}
-          />
+          <div className="input-wrapper">
+            <Input
+              location={this.state.location}
+              onChangeLocation={this.setLocation}
+              onBlur={this.clearInput} // 👈 Clears input when focus is lost
+            />
+            <button onClick={this.clearInput} className="clear-button">
+              ✖
+            </button>{' '}
+            {/* 👈 Updated Clear Button for a more seamless UI */}
+          </div>
         </div>
 
         {/* Show Loader If Loading */}

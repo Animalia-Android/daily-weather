@@ -133,3 +133,28 @@ input:focus {
   max-height: 500px; /* Adjust based on content */
   opacity: 1;
 }
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust spacing between input and button */
+  width: 100%;
+}
+
+.input-wrapper input {
+  flex: 1; /* Ensures the input takes up most of the space */
+  padding: 8px;
+}
+
+.clear-button {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888; /* Light gray color */
+  transition: color 0.2s;
+}
+
+.clear-button:hover {
+  color: #000; /* Darker on hover */
+}
